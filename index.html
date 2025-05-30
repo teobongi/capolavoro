@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visita al Vittoriale degli Italiani</title>
+    <style>
+        :root {
+            --primary-color: #1e88e5; /* Blu vivace invece del marrone */
+            --accent-color: #26a69a; /* Verde acqua invece del marrone chiaro */
+            --background-light: #e3f2fd; /* Azzurro chiaro invece del beige */
+            --text-color: #0d47a1; /* Blu scuro invece del marrone scuro */
+            --link-color: #7b1fa2; /* Viola invece del marrone medio */
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            background-color: #fff;
+        }
+
+        .hero-header {
+            background-image: url('img/Vittoriale.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            padding: 20px 0;
+            margin-bottom: 0;
+        }
+
+        .hero-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .hero-header h1, .hero-header .data {
+            position: relative;
+            z-index: 2;
+            color: white;
+        }
+
+        .hero-header h1 {
+            font-size: 3em;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .nav-menu {
+            background-color: transparent;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .nav-menu a:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background-color: var(--accent-color);
+            transition: all 0.3s ease;
+            z-index: -1;
+            border-radius: 20px;
+        }
+
+        .nav-menu a:hover {
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        
+        .nav-menu a:hover:before {
+            width: 100%;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .data {
+            font-style: italic;
+            color: rgba(255,255,255,0.9);
+            margin-top: 10px;
+            font-size: 1.2em;
+        }
+
+        .contenuto {
+            background: white;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-radius: 10px;
+            border-top: 4px solid var(--accent-color);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .contenuto:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(30, 136, 229, 0.3);
+            border-top-color: var(--link-color);
+        }
+        
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .image-gallery img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .image-gallery img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .image-gallery h3 {
+            color: var(--primary-color);
+            margin: 10px 0 5px 0;
+        }
+        
+        .info-box {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .info-item {
+            background-color: var(--background-light);
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .info-item:hover {
+            background-color: #e1f5fe;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+        
+        .info-item h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+        }
+        
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        
+        a:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, var(--primary-color), var(--link-color));
+            color: white;
+            margin-top: 50px;
+            border-top: 4px solid var(--accent-color);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer:before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(90deg, 
+                var(--primary-color) 0%, 
+                var(--accent-color) 25%, 
+                var(--link-color) 50%, 
+                var(--accent-color) 75%, 
+                var(--primary-color) 100%);
+            animation: rainbow 3s linear infinite;
+        }
+        
+        @keyframes rainbow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        
+        footer p {
+            font-size: 1.1em;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+    <header class="hero-header">
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="storia.html">Storia del Vittoriale</a></li>
+                <li><a href="visita.html">La mia visita</a></li>
+            </ul>
+        </nav>
+        <h1>Visita al Vittoriale degli Italiani</h1>
+        <div class="data">Il mio capolavoro - Matteo Bongiorni</div>
+    </header>
+
+    <div class="container">
+
+        <section class="contenuto">
+            <h2>Il Mio Diario di Viaggio</h2>
+            <p>Benvenuti nel mio diario di viaggio dedicato alla mia visita al Vittoriale degli Italiani. Ho creato questo sito come progetto scolastico per condividere la mia esperienza personale, le mie impressioni e ciò che ho imparato durante questa affascinante visita.</p>
+            <p>Il Vittoriale degli Italiani è stato per me una scoperta straordinaria: un complesso monumentale situato a Gardone Riviera, sulle sponde del Lago di Garda, che fu la residenza di Gabriele d'Annunzio. La visita mi ha permesso di immergermi nella vita e nelle opere di questo controverso poeta-soldato, in un contesto paesaggistico mozzafiato.</p>
+        </section>
+
+        <section class="contenuto">
+            <h2>I Luoghi che Mi Hanno Colpito</h2>
+            <div class="image-gallery">
+                <div>
+                    <img src="img/Nave_Puglia.jpg" alt="La Nave Puglia">
+                    <h3>La Nave Puglia</h3>
+                    <p>Sono rimasto affascinato da questa vera nave da guerra incastonata nella collina. Camminare sul ponte mi ha fatto sentire parte della storia e delle imprese di D'Annunzio.</p>
+                </div>
+                <div>
+                    <img src="img/anfiteatro.jpg" alt="L'Anfiteatro">
+                    <h3>L'Anfiteatro</h3>
+                    <p>La vista dal teatro è stata incredibile! Ho immaginato come doveva essere assistere a uno spettacolo qui, con il Lago di Garda come sfondo naturale. Un'esperienza indimenticabile.</p>
+                </div>
+                <div>
+                    <img src="img/Vittoriale.jpg" alt="La Prioria">
+                    <h3>La Prioria</h3>
+                    <p>La residenza principale di D'Annunzio mi ha affascinato con i suoi ambienti ricchi di simboli e oggetti d'arte. Ogni stanza racconta una storia e rivela la personalità eclettica del poeta.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="contenuto">
+            <h2>Note sulla Mia Visita</h2>
+            <div class="info-box">
+                <div class="info-item">
+                    <h3>Quando Sono Andato</h3>
+                    <p>Ho visitato il Vittoriale il 26 Maggio 2025<br>Giornata soleggiata e perfetta per la visita</p>
+                </div>
+                <div class="info-item">
+                    <h3>Cosa Mi è Piaciuto di Più</h3>
+                    <p>La Nave Puglia<br>I giardini panoramici<br>La collezione di libri rari</p>
+                </div>
+                <div class="info-item">
+                    <h3>Come Ci Sono Arrivato</h3>
+                    <p>Partenza con il pullman dalla scuola alle 8:00<br>Arrivo al Vittoriale alle 10:30<br>Rientro a Rho per le 18:00</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="contenuto">
+            <h2>Perché Questo Progetto</h2>
+            <p>Ho realizzato questo sito come mio "capolavoro" personale dopo la visita al Vittoriale degli Italiani. Ho scelto questa esperienza perché mi ha colpito profondamente e ha suscitato in me emozioni e riflessioni che volevo condividere e conservare nel tempo.</p>
+            <p>In queste pagine ho raccolto le mie impressioni personali e le informazioni che ho trovato più interessanti su questo straordinario complesso monumentale. Vi invito a esplorare la <a href="storia.html">storia del Vittoriale</a> che ho ricostruito per il mio capolavoro e il racconto dettagliato della <a href="visita.html">mia visita</a> con tutte le emozioni che ho provato.</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>Visita didattica con la classe 5Ci - Matteo Bongiorni</p>
+    </footer>
+</body>
+</html>
